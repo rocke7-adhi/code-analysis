@@ -46,7 +46,7 @@
                 <textarea id="input_code" name="input_code" placeholder="Enter code to analyze..."></textarea>
             </div>
             <div class="column selection-column">
-                <form id="analyse-form">
+                <form id="analyse-form" action="{{ url_for('analyze_page') }}" method="post">
                     <h2>Settings</h2>
                     
                     <label for="input_language">Language</label>
@@ -57,12 +57,12 @@
                         {% endfor %}
                     </select>
 
-                    <label for="selected_model">Model</label>
+                   <!-- <label for="selected_model">Model</label>
                     <select id="selected_model" name="selected_model">
                         {% for model in models %}
                             <option value="{{ model }}">{{ model }}</option>
                         {% endfor %}
-                    </select>
+                    </select>-->
 
                     <button type="submit" id="analyse-button">Analyze Code</button>
                     <button type="button" id="clear-button">Clear</button>

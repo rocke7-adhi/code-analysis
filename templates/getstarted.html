@@ -3,142 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Code Assistant - Get Started</title>
+    <title>Code Analysis Tool</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/getstart.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{ url_for('static', filename='js/getstart.js') }}"></script>
 </head>
 <body class="light-mode">
-    <header class="typewriter">
-        <h1>AI Code Assistant</h1>
+    <header>
+        <h1>Code Analysis Tool</h1>
         <nav class="header-nav">
-            <button id="theme-toggle" aria-label="Change theme">
-                <!-- Icon will be inserted by JavaScript -->
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
             </button>
-            <div class="theme-menu">
-                <div class="theme-option" data-theme="light">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <span>Light</span>
-                </div>
-                <div class="theme-option" data-theme="dark">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                    <span>Dark</span>
-                </div>
-                <div class="theme-option" data-theme="system">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                    <span>System</span>
-                </div>
-            </div>
         </nav>
     </header>
 
     <main class="getstarted-main">
         <div class="getstarted-container">
-            <section class="welcome-section">
-                <h2>Welcome to Your AI Code Assistant</h2>
-                <p>Choose from our powerful features to enhance your coding experience</p>
+            <section class="hero-section">
+                <h2>Analyze Your Code</h2>
+                <p>Get instant insights about your code quality, complexity, and best practices</p>
+                <a href="{{ url_for('analyze_page') }}" class="cta-button">Start Analysis</a>
             </section>
 
-            <section class="features-grid">
-                <!-- Code Conversion Card -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M16 18l6-6-6-6"></path>
-                            <path d="M8 6l-6 6 6 6"></path>
-                        </svg>
+            <section class="features-section">
+                <h3>What You Can Do</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 7L9 18l-5-5"></path>
+                            </svg>
+                        </div>
+                        <h4>Quality Check</h4>
+                        <p>Analyze code quality and identify potential improvements</p>
                     </div>
-                    <h2>Code Conversion</h2>
-                    <p>Transform your code between different programming languages with AI assistance.</p>
-                    <ul class="feature-list">
-                        <li>Support for multiple programming languages</li>
-                        <li>Maintain code logic and structure</li>
-                        <li>Smart syntax adaptation</li>
-                    </ul>
-                    <a href="{{ url_for('converter_page') }}" class="feature-button">Convert Code</a>
-                </div>
 
-                <!-- Code Explanation Card -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="16" x2="12" y2="12"></line>
-                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                        </svg>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4"></path>
+                                <path d="M12 8h.01"></path>
+                            </svg>
+                        </div>
+                        <h4>Best Practices</h4>
+                        <p>Get suggestions for following coding best practices</p>
                     </div>
-                    <h2>Code Explanation</h2>
-                    <p>Get detailed explanations of how your code works.</p>
-                    <ul class="feature-list">
-                        <li>Line-by-line explanation</li>
-                        <li>Identify key concepts</li>
-                        <li>Learn best practices</li>
-                    </ul>
-                    <a href="{{ url_for('explain_page') }}" class="feature-button">Explain Code</a>
-                </div>
 
-                <!-- Code Analysis Card -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
-                        </svg>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                        </div>
+                        <h4>Multiple Languages</h4>
+                        <p>Support for various programming languages</p>
                     </div>
-                    <h2>Code Analysis</h2>
-                    <p>Get insights into your code quality and complexity.</p>
-                    <ul class="feature-list">
-                        <li>Complexity metrics</li>
-                        <li>Quality assessment</li>
-                        <li>Issue detection</li>
-                    </ul>
-                    <a href="{{ url_for('analyze_page') }}" class="feature-button">Analyze Code</a>
-                </div>
-
-                <!-- Code Optimization Card -->
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
-                        </svg>
-                    </div>
-                    <h2>Code Optimization</h2>
-                    <p>Improve your code performance and readability.</p>
-                    <ul class="feature-list">
-                        <li>Performance improvements</li>
-                        <li>Code cleanup</li>
-                        <li>Best practices implementation</li>
-                    </ul>
-                    <a href="{{ url_for('optimize_page') }}" class="feature-button">Optimize Code</a>
                 </div>
             </section>
 
-            <section class="common-features">
-                <h2>Common Features</h2>
-                <div class="features-grid-small">
-                    <div class="feature-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="17 8 12 3 7 8"></polyline>
-                            <line x1="12" y1="3" x2="12" y2="15"></line>
-                        </svg>
-                        <h4>File Upload</h4>
-                        <p>Support for multiple file formats</p>
+            <section class="how-it-works">
+                <h3>How It Works</h3>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Paste Your Code</h4>
+                        <p>Copy and paste your code into the analysis tool</p>
                     </div>
-                    <div class="feature-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 3a9 9 0 0 0-9 9v7c0 1.1.9 2 2 2h4v-8h-2v-1a5 5 0 0 1 10 0v1h-2v8h4c1.1 0 2-.9 2-2v-7a9 9 0 0 0-9-9z"></path>
-                        </svg>
-                        <h4>AI Models</h4>
-                        <p>Choose from different AI models</p>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Select Language</h4>
+                        <p>Choose your programming language</p>
                     </div>
-                    <div class="feature-item">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        <h4>Copy & Download</h4>
-                        <p>Easy export options</p>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Get Results</h4>
+                        <p>Receive detailed analysis and suggestions</p>
                     </div>
                 </div>
             </section>
