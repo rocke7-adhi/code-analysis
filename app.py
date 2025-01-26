@@ -23,11 +23,16 @@ def analyze_page():
 # Code Analysis
 @app.route('/analyze', methods=['POST'])
 def analyze():
-    input_code = request.form['input_code']
-    input_language = request.form['input_language']
-    selected_model = request.form['selected_model']
-    analyse_result = analysis.analyze_code(input_code, input_language, selected_model)
-    return jsonify({'analyse_result': analyse_result})
+    try:
+        input_code = request.form['input_code']
+        input_language = request.form['input_language']
+        
+        # Create instance of CodeAnalysis and analyze the code
+        analyse_result = analysis.analyze_code(input_code, input_language)
+        
+        return jsonify({'analysis_result': analyse_result})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 
 if __name__ == '__main__':

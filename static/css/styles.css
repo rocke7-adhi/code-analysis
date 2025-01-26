@@ -3,15 +3,17 @@
     --text-color: #333;
     --header-bg: #484b6a;
     --header-text: #fff;
-    --column-bg: #d2d3db;
+    --column-bg: #dbdce8;
     --button-bg: #25274a;
     --button-text: #fff;
     --button-hover: #4f5474;
     --clear-button-bg: #e74c3c;
     --clear-button-hover: #c0392b;
-    --explain-button-bg: #25274a;
-    --explain-button-hover: #4f5474;
     --input-border: #ddd;
+    --codemirror-bg: #8c8cae;
+    --codemirror-text: #181717;
+    --textarea-bg: #847d7d;  /* Light gray background for textarea in light mode */
+    --textarea-text: #000000;  /* Black text for textarea in light mode */
 }
 
 .dark-mode {
@@ -25,9 +27,11 @@
     --button-hover: #000000;
     --clear-button-bg: #e74c3c;
     --clear-button-hover: #c0392b;
-    --explain-button-bg: #3c3c3c;
-    --explain-button-hover: #000000;
     --input-border: #444;
+    --codemirror-bg: #2c2c2c;
+    --codemirror-text: #f4f4f4;
+    --textarea-bg: #2c2c2c;  /* Dark background for textarea in dark mode */
+    --textarea-text: #f4f4f4;  /* Light text for textarea in dark mode */
 }
 
 * {
@@ -47,12 +51,13 @@ body {
 header {
     background-color: var(--header-bg);
     color: var(--header-text);
-    padding: 0.5rem;
+    padding: 1rem 2rem;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 80px;
     position: relative;
+    width: 100%;
 }
 
 h2 {
@@ -98,8 +103,8 @@ textarea {
     border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 14px;
-    background-color: var(--column-bg);
-    color: var(--text-color);
+    background-color: var(--textarea-bg) !important;
+    color: var(--textarea-text) !important;
     resize: both;
     overflow: auto;
 }
@@ -109,6 +114,7 @@ label {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     font-weight: bold;
+    color: var(--text-color);
 }
 
 select {
@@ -138,6 +144,7 @@ button {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-bottom: 0.5rem;
 }
 
 button:hover {
@@ -161,16 +168,13 @@ button:hover {
 }
 
 #theme-toggle {
-    position: relative;
-    right: 0;
-    transform: translateY(0);
     background: none;
     border: none;
     color: var(--header-text);
     cursor: pointer;
     padding: 8px;
-    width: auto;
-    z-index: 1;
+    width: 40px;
+    height: 40px;
 }
 
 #theme-toggle svg {
@@ -194,13 +198,27 @@ button:hover {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+    header {
+        padding: 1rem;
+    }
+
     .container {
         padding: 10px;
     }
 
     .column {
         padding: 1rem;
+    }
+    
+    .output-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .output-actions {
+        align-self: flex-end;
     }
 }
 
@@ -344,19 +362,6 @@ header .typewriter {
     white-space: nowrap;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .output-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-    }
-    
-    .output-actions {
-        align-self: flex-end;
-    }
-}
-
 /* Output column specific styling */
 .output-column {
     display: flex;
@@ -374,25 +379,27 @@ header .typewriter {
 
 /* Add these styles for CodeMirror */
 .CodeMirror {
-    height: 100%;
-    font-family: 'Fira Code', 'Consolas', monospace;
-    font-size: 14px;
+    background-color: var(--codemirror-bg) !important;
+    color: var(--codemirror-text) !important;
+    font-family: 'Consolas', 'Monaco', monospace;
     line-height: 1.5;
-    border-radius: 4px;
+    height: 100% !important;
+    border: 1px solid var(--input-border);
 }
 
-.column .CodeMirror {
-    height: calc(100% - 35px);
+.CodeMirror-gutters {
+    background-color: var(--codemirror-bg) !important;
+    border-right: 1px solid var(--input-border) !important;
 }
 
 /* Dark mode support for CodeMirror */
 .dark-mode .CodeMirror {
-    border-color: var(--input-border);
+    border: 1px solid #444;
 }
 
 .dark-mode .CodeMirror-gutters {
-    background-color: #1e1e1e;
-    border-right: 1px solid #444;
+    background-color: var(--codemirror-bg) !important;
+    border-right: 1px solid var(--input-border) !important;
 }
 
 /* Adjust the container heights */
@@ -419,17 +426,15 @@ header .typewriter {
     right: 0;
     margin: 0.5rem;
     z-index: 1;
-    
-
 }
-
 
 /* Adjust the CodeMirror container to account for the button */
 .input-column .CodeMirror {
+    background-color: var(--codemirror-bg) !important;
+    color: var(--codemirror-text) !important;
     height: calc(100% - 40px);  /* Adjust the height to account for header */
     margin-top: 0;
 }
-
 
 /* Ensure the input column header doesn't overlap with the upload button */
 .input-column h2 {
@@ -453,7 +458,6 @@ header .typewriter {
     margin-right: 10px;
 }
 
-
 #upload-button:hover {
     background: var(--button-hover);
     border-color: var(--button-bg);
@@ -468,7 +472,7 @@ header .typewriter {
     right: 20px;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 }
 
 .nav-link {
@@ -477,7 +481,6 @@ header .typewriter {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s;
-    margin-right: 40px;
 }
 
 .nav-link:hover {
@@ -511,4 +514,8 @@ select:invalid {
     margin-bottom: 10px;
 }
 
-  
+/* Add these styles for formatted analysis output */
+.CodeMirror {
+    font-family: 'Consolas', 'Monaco', monospace;
+    line-height: 1.5;
+}

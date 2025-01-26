@@ -376,31 +376,31 @@ $(document).ready(function() {
     }
 
     // Function to detect language from code content
-    function detectLanguageFromContent(code) {
+//    function detectLanguageFromContent(code) {
         // Common patterns to identify languages
-        const patterns = {
-            'Python': /(import\s+[a-zA-Z_][a-zA-Z0-9_]*|def\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\(|print\s*\()/,
-            'JavaScript': /(const|let|var)\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=|function\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*\(|console\.log\(|:\s+[a-zA-Z_$][a-zA-Z0-9_$]*/,
-            'Java': /(public|private|protected)\s+(class|interface|enum)|System\.out\.println/,
-            'Csharp': /(using\s+[a-zA-Z.]+;|namespace\s+[a-zA-Z.]+|Console\.WriteLine)/,
-            'PHP': /(<\?php|\$[a-zA-Z_][a-zA-Z0-9_]*|echo\s)/,
-            'Ruby': /(require|def\s+[a-zA-Z_][a-zA-Z0-9_]*|puts\s)/,
-            'Golang': /(package\s+[a-zA-Z_][a-zA-Z0-9_]*|func\s+[a-zA-Z_][a-zA-Z0-9_]*|fmt\.Println)/,
-            'Kotlin': /(fun\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\(|val\s+[a-zA-Z_][a-zA-Z0-9_]*\s*=)/,
-            'TypeScript': /(const|let|var)\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=|function\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*\(|console\.log\(|:\s+[a-zA-Z_$][a-zA-Z0-9_$]*/,
-            'Pascal': /(program\s+[a-zA-Z0-9_]+;|begin\s+.*end\.)/,
-            'Haskell': /(module\s+[a-zA-Z0-9_]+|import\s+[a-zA-Z0-9_.]+)/,
-            'VB.NET': /(Imports\s+[a-zA-Z0-9_.]+|Sub\s+[a-zA-Z0-9_]+\()/,
-            'Swift': /(import\s+[a-zA-Z0-9_.]+|func\s+[a-zA-Z0-9_]+\s*\()/,
-        };
-
-        for (const [language, pattern] of Object.entries(patterns)) {
-            if (pattern.test(code)) {
-                return language;
-            }
-        }
-        return null;
-    }
+//        const patterns = {
+//            'Python': /(import\s+[a-zA-Z_][a-zA-Z0-9_]*|def\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\(|print\s*\()/,
+//            'JavaScript': /(const|let|var)\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=|function\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*\(|console\.log\(|:\s+[a-zA-Z_$][a-zA-Z0-9_$]*/,
+//            'Java': /(public|private|protected)\s+(class|interface|enum)|System\.out\.println/,
+//            'Csharp': /(using\s+[a-zA-Z.]+;|namespace\s+[a-zA-Z.]+|Console\.WriteLine)/,
+//            'PHP': /(<\?php|\$[a-zA-Z_][a-zA-Z0-9_]*|echo\s)/,
+//            'Ruby': /(require|def\s+[a-zA-Z_][a-zA-Z0-9_]*|puts\s)/,
+//            'Golang': /(package\s+[a-zA-Z_][a-zA-Z0-9_]*|func\s+[a-zA-Z_][a-zA-Z0-9_]*|fmt\.Println)/,
+//            'Kotlin': /(fun\s+[a-zA-Z_][a-zA-Z0-9_]*\s*\(|val\s+[a-zA-Z_][a-zA-Z0-9_]*\s*=)/,
+//            'TypeScript': /(const|let|var)\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=|function\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*\(|console\.log\(|:\s+[a-zA-Z_$][a-zA-Z0-9_$]*/,
+//            'Pascal': /(program\s+[a-zA-Z0-9_]+;|begin\s+.*end\.)/,
+//            'Haskell': /(module\s+[a-zA-Z0-9_]+|import\s+[a-zA-Z0-9_.]+)/,
+//            'VB.NET': /(Imports\s+[a-zA-Z0-9_.]+|Sub\s+[a-zA-Z0-9_]+\()/,
+//            'Swift': /(import\s+[a-zA-Z0-9_.]+|func\s+[a-zA-Z0-9_]+\s*\()/,
+//        };
+//
+//        for (const [language, pattern] of Object.entries(patterns)) {
+//            if (pattern.test(code)) {
+//                return language;
+//            }
+//        }
+//        return null;
+//    }
 
     // Add input editor change handler
     inputEditor.on('change', function(cm, change) {
@@ -413,5 +413,3 @@ $(document).ready(function() {
         }
     });
 });
-
-
